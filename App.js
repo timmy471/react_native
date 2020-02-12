@@ -47,16 +47,25 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => ({
-  count: state.count,
-});
+// const mapStateToProps = state => ({
+//   count: state.count,
+// });
 
 const ActionCreators = Object.assign(
   {},
   changeCount,
 );
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(ActionCreators, dispatch),
-});
+// const mapDispatchToProps = dispatch => ({
+//   actions: bindActionCreators(ActionCreators, dispatch),
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(
+  (state) => ({
+  count: state.count
+  }),
+  (dispatch) => ({
+    actions: bindActionCreators(ActionCreators, dispatch)
+  })
+)(App)
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App)
